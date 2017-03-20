@@ -3,11 +3,11 @@
  * @module src/ddb
  */
 
+'use strict';
+
+
 const util = require('util');
 const s3 = require('./aws-sdk/clients/s3');
-
-const bucket = 'weave.io.dynamodb';
-
 
 exports.handler = (event, context, callback) => {
   
@@ -59,13 +59,14 @@ const arn2name = function(arn) {
   return tmp[1] + '/' + tmp[3];
 };
 
+const BUCKET = 'weave.io.dynamodb';
 
 const doUpload = function(key, body, callback) {
-  s3.putObject({Bucket: bucket, Key: key, Body: body}, callback);
+  s3.putObject({Bucket: BUCKET, Key: key, Body: body}, callback);
 };
 
 const doDelete = function(key, callback) {
-  s3.deleteObject({Bucket: bucket, Key: key}, callback);
+  s3.deleteObject({Bucket: BUCKET, Key: key}, callback);
 };
 
 
