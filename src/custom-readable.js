@@ -1,7 +1,10 @@
 /* eslint-env node */
 
+'use strict';
+
 const Readable = require('stream').Readable;
 
+/** @this CustomReadable */
 const CustomReadable = function() {
   Readable.call(this);
   this._readableState.objectMode = true;
